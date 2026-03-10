@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Note } from '../note';
 import { FormsModule } from '@angular/forms';
 import { NoteService } from '../note.service';
@@ -15,7 +15,8 @@ export class CreateNote implements OnInit {
   note: Note = new Note();
   constructor(
     private noteService: NoteService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ){}
   ngOnInit(): void {
     throw new Error('Method not implemented.');
@@ -28,6 +29,7 @@ export class CreateNote implements OnInit {
   }
 
   goToNoteList(){
+    this.cdr.detectChanges();
     this.router.navigate([`/notes`])
   }
 

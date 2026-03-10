@@ -1,0 +1,29 @@
+<h2>Note List </h2>
+<p>Total Notes: {{ notes.length }}</p>
+<!-- <ng-container *ngIf="notes.length"></ng-container> -->
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>No.</th>
+            <th>Title</th>
+            <th>Content</th>
+            <th>Created</th>
+            <th>Last Modified</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (note of notes; track note.id; let i = $index) {
+            <tr>
+                <td>{{ i + 1 }}</td>
+                <td>{{ note.title }}</td>
+                <td>{{ note.content }}</td>
+                <td>{{ note.createdAt }}</td>
+                <td>{{ note.updatedAt }}</td>
+                <td>
+                    <button (click) = "deleteNote(note.id)" class="btn btn-danger">Delete</button>
+                </td> 
+            </tr>
+        }
+    </tbody>
+</table>

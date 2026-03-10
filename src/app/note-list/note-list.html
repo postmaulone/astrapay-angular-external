@@ -1,5 +1,5 @@
 <h2>Note List </h2>
-<p>Total Notes: {{ notes.length }}</p>
+<!-- <p>Total Notes: {{ notes.length }}</p> -->
 <!-- <ng-container *ngIf="notes.length"></ng-container> -->
 <table class="table table-striped">
     <thead>
@@ -23,6 +23,14 @@
                 <td>
                     <button (click) = "deleteNote(note.id)" class="btn btn-danger">Delete</button>
                 </td> 
+            </tr>
+        } @empty {
+            <tr>
+                <td colspan="6" class="text-center">
+                    <div>
+                        <p class="text-muted">Notes are empty. Click "Create" to add one!</p>
+                    </div>
+                </td>
             </tr>
         }
     </tbody>
